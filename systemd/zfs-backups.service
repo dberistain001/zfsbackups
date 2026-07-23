@@ -1,0 +1,15 @@
+[Unit]
+Description=Configuration-driven ZFS snapshot backups
+Documentation=file:/var/zfsBackups/README.md
+After=zfs-import.target zfs-mount.service
+Wants=zfs-import.target
+
+[Service]
+Type=oneshot
+ExecStart=/var/zfsBackups/scripts/zfs-backup-runner.sh
+Nice=10
+IOSchedulingClass=best-effort
+IOSchedulingPriority=7
+PrivateTmp=true
+ProtectHome=false
+ProtectSystem=false

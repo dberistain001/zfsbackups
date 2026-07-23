@@ -1,0 +1,12 @@
+[Unit]
+Description=Check ZFS backup configurations every minute
+
+[Timer]
+OnBootSec=2min
+OnUnitActiveSec=1min
+AccuracySec=5s
+Persistent=true
+Unit=zfs-backups.service
+
+[Install]
+WantedBy=timers.target
